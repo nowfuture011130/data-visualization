@@ -1,0 +1,324 @@
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.box {
+  width: 1rem;
+  height: 1rem;
+  background-color: pink;
+}
+body {
+  background: url(../images/bg.jpg) no-repeat top center;
+  line-height: 1.15;
+}
+header {
+  position: relative;
+  height: 1.25rem;
+  background: url(../images/head_bg.png) no-repeat;
+  background-size: 100% 100%;
+}
+header h1 {
+  font-size: 0.475rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1rem;
+}
+.showTime {
+  position: absolute;
+  left: 0.375rem;
+  line-height: 0.9375rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.25rem;
+  top: 0;
+}
+.mainbox {
+  display: flex;
+  min-width: 1024px;
+  max-width: 1920px;
+  margin: auto;
+  padding: 0.125rem 0.125rem 0;
+}
+.mainbox .column {
+  flex: 3;
+}
+.mainbox .column:nth-child(2) {
+  flex: 5;
+  margin: 0.1875rem 0.125rem;
+}
+.mainbox .panel {
+  position: relative;
+  height: 3.875rem;
+  background-color: pink;
+  border: 1px solid rgba(25, 186, 139, 0.17);
+  background: url(../images/line\(1\).png) rgba(255, 255, 255, 0.03);
+  padding: 0 0.1875rem 0.5rem;
+  margin-bottom: 0.1875rem;
+}
+.mainbox .panel::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-left: 2px solid #02a6b5;
+  border-top: 2px solid #02a6b5;
+  content: "";
+}
+.mainbox .panel::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  border-right: 2px solid #02a6b5;
+  border-top: 2px solid #02a6b5;
+  content: "";
+}
+.mainbox .panel .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.mainbox .panel .footer::before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  border-right: 2px solid #02a6b5;
+  border-bottom: 2px solid #02a6b5;
+  content: "";
+}
+.mainbox .panel .footer::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-left: 2px solid #02a6b5;
+  border-bottom: 2px solid #02a6b5;
+  content: "";
+}
+.mainbox .panel h2 {
+  height: 0.6rem;
+  color: #fff;
+  line-height: 0.6rem;
+  text-align: center;
+  font-size: 0.25rem;
+  font-weight: 400;
+}
+.mainbox .panel .chart {
+  height: 3rem;
+  display: flex;
+}
+.mainbox .panel .chart .left-part {
+  flex: 1;
+  /* Make the .left-part take the full width of the parent (.chart) */
+  display: flex;
+  flex-basis: 40%;
+  flex-direction: column;
+}
+.mainbox .panel .chart .left-part .box1,
+.mainbox .panel .chart .left-part .box2,
+.mainbox .panel .chart .left-part .box3 {
+  flex: 1;
+  background: url("../images//border.png") no-repeat center center;
+  background-size: 90% 90%;
+}
+
+.mainbox .panel .chart .right-part {
+  flex-basis: 60%;
+}
+.mainbox .panel .chart > div {
+  flex: 1;
+}
+.list {
+  padding: 10.1875rem;
+  margin-top: 7.935rem;
+  background-color: #0036d6;
+}
+.buttons-container {
+  display: flex;
+  /* To arrange the buttons in a row */
+  justify-content: center;
+  /* To center the buttons horizontally */
+  margin-top: 0px;
+  /* Add some space between the heading and the buttons */
+  margin-bottom: 0px;
+}
+.buttons-container button {
+  padding: 0.025rem 0.2rem;
+  /* Add some padding to the buttons */
+  margin: 0px;
+  /* Add some space between the buttons */
+  background-color: #2a5fff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.175rem;
+}
+.buttons-container button:nth-child(1) {
+  background-color: #0036d6;
+}
+.chart table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  overflow-y: auto;
+}
+.chart td {
+  padding: 2px 10px;
+  text-align: center;
+  border: 1px solid #ffffff71;
+  background-color: rgba(135, 206, 250, 0.5);
+  color: #fff;
+  font-size: small;
+  padding: 0px 0px;
+  height: 30px;
+}
+.chart th {
+  background-color: #2b15ad;
+  color: #00bfff;
+  font-size: medium;
+  border: 1px;
+  padding: 0px 0px;
+}
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.imageContainer {
+  position: absolute;
+  width: 10.0375rem;
+  height: 10.0375rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lbx {
+  position: absolute;
+  width: 10.275rem;
+  height: 10.275rem;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../images/lbx.png) no-repeat center center;
+  background-size: 100% 100%;
+  animation: rotate 15s linear infinite;
+}
+.chip {
+  position: absolute;
+  width: 15.187rem;
+  height: 10.275rem;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../images/chip.png) no-repeat center center;
+  background-size: 100% 100%;
+}
+.chip .chip-num1 {
+  margin-left: 4.2025rem;
+  margin-top: 4.175rem;
+}
+.chip .chip-num2 {
+  margin-left: 10.4875rem;
+  margin-top: 5.073rem;
+}
+.chip .chip-num3 {
+  margin-left: 3.12rem;
+  margin-top: 1.703rem;
+}
+.chip .chip-num4 {
+  margin-left: 9rem;
+}
+.red-highlighted {
+  font-weight: 600;
+  color: red !important;
+  display: inline-block;
+  padding: 3px 6px;
+  background-color: rgba(255, 0, 0, 0.3);
+  border-radius: 5px;
+}
+.yellow-highlighted {
+  font-weight: 600;
+  color: yellow !important;
+  display: inline-block;
+  padding: 3px 6px;
+  background-color: rgba(255, 255, 0, 0.3);
+  border-radius: 5px;
+}
+.blue-highlighted {
+  font-weight: 600;
+  color: #00b3ff !important;
+  display: inline-block;
+  padding: 3px 6px;
+  background-color: rgba(0, 0, 255, 0.3);
+  border-radius: 5px;
+}
+.box1 .line1,
+.box2 .line1,
+.box3 .line1,
+.box1 .line2,
+.box2 .line2,
+.box3 .line2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px;
+  font-size: small;
+}
+.line1 h4,
+.line2 h4 {
+  color: #fff;
+  padding-left: 10px;
+  font-weight: 400;
+}
+.line1 h5,
+.line2 h5 {
+  color: #fff;
+  padding-right: 10px;
+  font-weight: 800;
+}
+.line1 h4,
+.line1 h5 {
+  padding-top: 5px;
+}
+.line1 h5 {
+  color: #00eeff;
+}
+.chip-num1,
+.chip-num2,
+.chip-num3,
+.chip-num4 {
+  position: absolute;
+  width: 1.5475rem;
+  height: 0.755rem;
+}
+.chip-num1 h5,
+.chip-num2 h5,
+.chip-num3 h5,
+.chip-num4 h5 {
+  font-size: 30%;
+  padding-left: 0.0725rem;
+  padding-top: 0.0725rem;
+  color: #00ffbf;
+}
+.chip-num1 li,
+.chip-num2 li,
+.chip-num3 li,
+.chip-num4 li {
+  flex: 1;
+  font-size: 0.375rem;
+  color: #fff;
+  text-align: center;
+  list-style: none;
+  font-family: "electronicFont";
+}

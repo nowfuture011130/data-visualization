@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0" />
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="imageContainer">
+      <div class="lbx"></div>
+      <div class="chip">
+        <div class="chip-num1">
+          <h5>监测数据</h5>
+          <li>1,654,620</li>
+        </div>
+        <div class="chip-num2">
+          <h5>监测数据</h5>
+          <li>1,794,150</li>
+        </div>
+        <div class="chip-num3">
+          <h5>监测数据</h5>
+          <li>514,250</li>
+        </div>
+        <div class="chip-num4">
+          <h5>监测数据</h5>
+          <li>3,184,623</li>
+        </div>
+      </div>
+    </div>
+    <header>
+      <div class="showTime"></div>
+      <script>
+        var t = null;
+        t = setTimeout(time, 1000);
+        function time() {
+          clearTimeout(t);
+          dt = new Date();
+          var weekArray = new Array(
+            "星期日",
+            "星期一",
+            "星期二",
+            "星期三",
+            "星期四",
+            "星期五",
+            "星期六"
+          );
+          var week = weekArray[dt.getDay()];
+          var y = dt.getFullYear();
+          var mt = dt.getMonth() + 1;
+          var day = dt.getDate();
+          var h = dt.getHours(); //获取时
+          var m = dt.getMinutes(); //获取分
+          var s = dt.getSeconds(); //获取秒
+          document.querySelector(".showTime").innerHTML =
+            y + "-" + mt + "-" + day + " " + h + ":" + m + ":" + s + " " + week;
+          t = setTimeout(time, 1000);
+        }
+      </script>
+      <h1>溯源网络安全与数字运维智慧管理平台</h1>
+    </header>
+    <!-- 页面主体 -->
+    <section class="mainbox">
+      <div class="column">
+        <div class="panel bar">
+          <h2>网络设备总体监控</h2>
+          <div class="chart">
+            <div class="content1"></div>
+            <div class="content2"></div>
+          </div>
+          <div class="footer"></div>
+        </div>
+
+        <div class="panel line2">
+          <h2>网络流量走势</h2>
+          <div class="chart"></div>
+          <div class="footer"></div>
+        </div>
+
+        <div class="panel pie">
+          <h2>网络安全设备</h2>
+          <div class="chart">
+            <div class="left-part">
+              <div class="box1">
+                <div class="line1">
+                  <h4>防火墙</h4>
+                  <h5>5</h5>
+                </div>
+                <div class="line2">
+                  <h4>安全事件</h4>
+                  <h5>121</h5>
+                </div>
+              </div>
+              <div class="box2">
+                <div class="line1">
+                  <h4>监控物理服务器</h4>
+                  <h5>2</h5>
+                </div>
+                <div class="line2">
+                  <h4>安全事件</h4>
+                  <h5>65</h5>
+                </div>
+              </div>
+              <div class="box3">
+                <div class="line1">
+                  <h4>虚拟专用网</h4>
+                  <h5>3</h5>
+                </div>
+                <div class="line2">
+                  <h4>安全事件</h4>
+                  <h5>287</h5>
+                </div>
+              </div>
+            </div>
+            <div class="right-part"></div>
+          </div>
+          <div class="footer"></div>
+        </div>
+      </div>
+      <!-- 中间部分 -->
+      <div class="column">
+        <div class="panel list">
+          <h2>告警事件列表</h2>
+          <div class="chart"></div>
+          <div class="footer"></div>
+        </div>
+      </div>
+      <!-- 右边部分 -->
+      <div class="column">
+        <div class="panel line">
+          <h2>监控告警走势</h2>
+          <div class="chart"></div>
+          <div class="footer"></div>
+        </div>
+
+        <div class="panel circle">
+          <h2>虚拟化监控</h2>
+          <div class="chart" id="virtualization-chart"></div>
+          <div class="footer"></div>
+        </div>
+
+        <div class="panel bar2">
+          <h2>服务器资源使用TOP5</h2>
+          <div class="buttons-container">
+            <!-- Three horizontally aligned buttons -->
+            <button id="button-cpu" class="button-cpu">CPU</button>
+            <button id="button-memory" class="button-memory">内存</button>
+            <button id="button-harddisk" class="button-harddisk">硬盘</button>
+          </div>
+          <div class="chart"></div>
+          <div class="footer"></div>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/flexible.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+
+    <script>
+      const buttons = document.querySelectorAll(".buttons-container button");
+      buttons.forEach((button) => {
+        button.addEventListener("click", handleButtonPress);
+      });
+      function handleButtonPress(event) {
+        buttons.forEach((button) => {
+          button.style.backgroundColor = "#2a5fff";
+        });
+        event.target.style.backgroundColor = "#0036d6";
+      }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var myChart = echarts.init(
+          document.getElementById("virtualization-chart")
+        );
+        var myColor = ["#8B78F6", "#f0b002", "#1089E7", "#56D0E3"];
+        var option = {
+          polar: {
+            radius: [20, "100%"],
+            axisLabel: {
+              show: false, // Hide the axis labels (numbers)
+            },
+            splitLine: {
+              show: false, // Hide the split lines
+            },
+          },
+          tooltip: {},
+          angleAxis: {
+            max: 60,
+            startAngle: 90,
+            axisTick: { show: false },
+            axisLine: {
+              lineStyle: {
+                color: "rgba(255,255,255,.1)",
+              },
+            },
+            axisLabel: {
+              show: false,
+            },
+            splitLine: {
+              lineStyle: {
+                color: "rgba(255,255,255,.1)",
+              },
+            },
+          },
+          radiusAxis: {
+            type: "category",
+            data: ["数据中心", "集群", "主机", "虚拟机"],
+            axisTick: { show: false },
+            axisLine: {
+              lineStyle: {
+                color: "rgba(255,255,255,.1)",
+              },
+            },
+            axisLabel: {
+              textStyle: {
+                color: "rgba(255,255,255,.6)",
+                fontSize: 8,
+              },
+              formatter: function (value, index) {
+                return value + ": " + option.series.data[index];
+              },
+            },
+            splitLine: {
+              lineStyle: {
+                color: "rgba(255,255,255,.1)",
+              },
+            },
+          },
+          series: {
+            type: "bar",
+            data: [13, 26, 38, 55],
+            itemStyle: {
+              color: function (params) {
+                return myColor[params.dataIndex];
+              },
+            },
+            coordinateSystem: "polar",
+          },
+        };
+
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+          myChart.resize();
+        });
+      });
+    </script>
+  </body>
+</html>
