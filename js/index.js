@@ -514,9 +514,15 @@
 (function createTable() {
   // Get the chart container element
   var chartContainer = document.querySelector(".list .chart");
+  var container = document.createElement("div");
+  var container2 = document.createElement("div");
+  var headerTable = document.createElement("table");
+  var dataTable = document.createElement("table");
+  container2.classList.add("scroll-container");
+  headerTable.classList.add("header-table");
+  dataTable.classList.add("data-table");
 
   // Create the table element
-  var table = document.createElement("table");
 
   // Create the header row
   var headerRow = document.createElement("tr");
@@ -536,7 +542,8 @@
   });
 
   // Append the header row to the table
-  table.appendChild(headerRow);
+  headerTable.appendChild(headerRow);
+  container.appendChild(headerTable);
 
   // Create the table rows with data
   var rowData1 = ["1", "处理器", "10", "运营", "采集", "5", "高危"];
@@ -544,7 +551,23 @@
   var rowData3 = ["3", "处理器", "10", "运营", "采集", "5", "低危"];
   var rowData4 = ["4", "处理器", "10", "运营", "采集", "5", "低危"];
   var rowData5 = ["5", "处理器", "10", "运营", "采集", "5", "低危"];
-  var rows = [rowData1, rowData2, rowData3, rowData4, rowData5];
+  var rowData6 = ["6", "处理器", "10", "运营", "采集", "5", "高危"];
+  var rowData7 = ["7", "处理器", "10", "运营", "采集", "5", "中危"];
+  var rowData8 = ["8", "处理器", "10", "运营", "采集", "5", "低危"];
+  var rowData9 = ["9", "处理器", "10", "运营", "采集", "5", "低危"];
+  var rowData10 = ["10", "处理器", "10", "运营", "采集", "5", "低危"];
+  var rows = [
+    rowData1,
+    rowData2,
+    rowData3,
+    rowData4,
+    rowData5,
+    rowData6,
+    rowData7,
+    rowData8,
+    rowData9,
+    rowData10,
+  ];
 
   rows.forEach((rowData) => {
     var row = document.createElement("tr");
@@ -567,8 +590,24 @@
       }
       row.appendChild(cell);
     });
-    table.appendChild(row);
+    dataTable.appendChild(row);
   });
+  container2.appendChild(dataTable);
+  container.appendChild(container2);
+  chartContainer.appendChild(container);
 
-  chartContainer.appendChild(table);
+  var scrollAmount = 1; // Adjust the scrolling speed as per your requirement
+  var scrollInterval = 50; // Adjust the interval (in milliseconds) as per your requirement
+  var currentScrollPosition = 0;
+  function autoScrollTable() {
+    currentScrollPosition += scrollAmount;
+    if (
+      currentScrollPosition >=
+      dataTable.offsetHeight - container2.clientHeight
+    ) {
+      currentScrollPosition = 0;
+    }
+    container2.scrollTop = currentScrollPosition;
+  }
+  setInterval(autoScrollTable, scrollInterval);
 })();
