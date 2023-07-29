@@ -260,21 +260,21 @@ header h1 {
   font-size: small;
   font-weight: 800;
 }
-.line1 h4,
-.line2 h4 {
+.line1 .name,
+.line2 .name {
   color: #fff;
   padding-left: 15px;
 }
-.line1 h5,
-.line2 h5 {
+.line1 .data,
+.line2 .data {
   color: #fff;
   padding-right: 15px;
 }
-.line1 h4,
-.line1 h5 {
+.line1 .name,
+.line1 .data {
   padding-top: 5px;
 }
-.line1 h5 {
+.line1 .data {
   color: #00eeff;
 }
 .chip-num1,
@@ -285,10 +285,10 @@ header h1 {
   width: 1.5475rem;
   height: 0.755rem;
 }
-.chip-num1 h5,
-.chip-num2 h5,
-.chip-num3 h5,
-.chip-num4 h5 {
+.chip-num1 .chip-name,
+.chip-num2 .chip-name,
+.chip-num3 .chip-name,
+.chip-num4 .chip-name {
   font-size: 30%;
   padding-left: 0.0725rem;
   padding-top: 0.0725rem;
