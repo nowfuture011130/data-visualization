@@ -332,6 +332,7 @@ header h1 {
   border: 1px solid #ffffff71;
   background-color: rgba(135, 206, 250, 0.5);
   color: #fff;
+  height: 0.645rem;
   font-size: medium;
   padding: 0px 0px;
   text-align: center;
